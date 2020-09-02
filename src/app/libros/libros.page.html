@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Libros</ion-title>
+    <ion-button color="primary" slot="end" (click)="obtenerLibros()">Actualizar</ion-button>
+    <ion-button *ngIf="usuario == 'ADMINISTRADOR'" color="primary" slot="end" [routerLink]="['/form-common']">Registrar</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="libros.length > 0  && usuario == 'CLIENTE'">
+    <ion-card *ngFor="let libro of libros">
+      <ion-item>
+        <ion-label>Nombre: {{libro.nombre}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Autor: {{libro.autor}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categoria: {{libro.categoria}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tarifa: {{libro.tarifa}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantidad disponible: {{libro.cantidadDisponible}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantidad reservada: {{libro.cantidadReservada}}</ion-label>
+      </ion-item>
+      <ion-button expand="full" [routerLink]="['/reserva', libro.id]">Reservar</ion-button>
+    </ion-card>
+  </ion-card>
+
+  <ion-card *ngIf="libros.length > 0 && usuario == 'ADMINISTRADOR'">
+    <ion-card *ngFor="let libro of libros">
+      <ion-item>
+        <ion-label>Nombre: {{libro.nombre}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Autor: {{libro.autor}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categoria: {{libro.categoria}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tarifa: {{libro.tarifa}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantidad en inventario: {{libro.cantidad}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantidad disponible: {{libro.cantidadDisponible}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantidad reservada: {{libro.cantidadReservada}}</ion-label>
+      </ion-item>
+      <ion-button expand="full"  color="warning" [routerLink]="['/form-common' , libro.id]">Editar</ion-button>
+      <ion-button expand="full"  color="danger" (click)="eliminarLibro(libro.id)">Eliminar</ion-button>
+    </ion-card>
+  </ion-card>
+</ion-content>

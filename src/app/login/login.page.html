@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+      <ion-input [(ngModel)]="usuario.usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario.contrasena"></ion-input>
+    </ion-item>
+    <ion-button color="warning" fill="outline" (click)="registar()">Registrar</ion-button>
+    <ion-button color="success" (click)="autenticar()">Ingresar</ion-button>
+
+  </ion-card>
+</ion-content>

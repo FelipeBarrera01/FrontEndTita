@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{accion}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-input [(ngModel)]="libro.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Autor:</ion-label>
+      <ion-input [(ngModel)]="libro.autor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoria:</ion-label>
+      <ion-input [(ngModel)]="libro.categoria"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cantidad inventario:</ion-label>
+      <ion-input type="number" [(ngModel)]="libro.cantidad"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tarifa:</ion-label>
+      <ion-input type="number" [(ngModel)]="libro.tarifa"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="idLibro == null">
+      <ion-label>Cantidad disponible:</ion-label>
+      <ion-input readonly [(ngModel)]="libro.cantidad"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="idLibro">
+      <ion-label>Cantidad disponible:</ion-label>
+      <ion-input readonly [(ngModel)]="libro.cantidadDisponible"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cantidad reservada:</ion-label>
+      <ion-input  readonly [(ngModel)]="libro.cantidadReservada"></ion-input>
+    </ion-item>
+    <ion-button expand="full"  (click)="guardarLibro()">Guardar</ion-button>
+  </ion-card>
+</ion-content>
